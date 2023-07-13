@@ -8,13 +8,16 @@ response = requests.get(url)
 if response.status_code == 200:
     # Mendapatkan data JSON dari respons
     data = response.json()
-    
+
     # Memproses data JSON
     for category, containers in data.items():
         print(f"Kategori: {category}")
         for container in containers:
-            print(f"Nama Kontainer: {container['nama_kontainer']}")
+            if 'nama_kontainer' in container:
+                print(f"Nama Kontainer: {container['nama_kontainer']}")
+            else:
+                print("Kunci 'nama_kontainer' tidak ditemukan dalam objek kontainer")
             # Lakukan operasi lain sesuai kebutuhan
-            
+
 else:
     print(f"Permintaan gagal dengan kode status {response.status_code}")
