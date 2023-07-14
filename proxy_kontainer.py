@@ -8,6 +8,7 @@ response = requests.get(url)
 if response.status_code == 200:
     # Mendapatkan data JSON dari respons
     data = response.json()
+    print(data)
 
     # Memproses data JSON
     for category, containers in data.items():
