@@ -19,5 +19,10 @@ if response.status_code == 200:
                 print("Kunci 'nama_kontainer' tidak ditemukan dalam objek kontainer")
             # Lakukan operasi lain sesuai kebutuhan
 
+            if 'nim' in container:
+                print(f"NIM: {container['nim']}")
+            else:
+                print("Kunci 'nim' tidak ditemukan dalam objek kontainer")
+
 else:
     print(f"Permintaan gagal dengan kode status {response.status_code}")
