@@ -72,7 +72,7 @@ frontend haproxynode
                 port = container['port']
 
                 # acl_line = f"    acl svr_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
-                use_backend_line = f"    use_backend be_{id} if { path /{nim}/{category} }||  { path_beg /{nim}/{category}/ }"
+                use_backend_line = f"    use_backend be_{id} if {{ path /{nim}/{category} }}||  {{ path_beg /{nim}/{category}/ }}"
                 backend_block = f"""
 backend be_{id}
     # mode http
