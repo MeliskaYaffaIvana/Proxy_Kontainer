@@ -77,7 +77,7 @@ frontend haproxynode
 backend be_{id}
     mode http
     option forwardfor
-    server 10.0.0.21:{port}
+    server server1 10.0.0.21:{port}
 """
 
                 # Menyimpan data ke variabel
