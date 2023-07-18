@@ -12,8 +12,7 @@ if response.status_code == 200:
     # Membuat file untuk menyimpan semua konfigurasi
     nama_file = "/etc/haproxy/haproxy.cfg"
 
-    # Menyiapkan variabel untuk menyimpan data acl_line, use_backend_line, dan backend_block
-    acl_lines = []
+    # Menyiapkan variabel untuk menyimpan data use_backend_line, dan backend_block
     use_backend_lines = []
     backend_blocks = []
 
@@ -71,6 +70,11 @@ frontend haproxynode
                 nim = container['nim']
                 port = container['port']
 
+                if category == 'frontend':
+                    category = 'fg'
+                elif category == 'backend':
+                    category = 'bg'
+
                 # acl_line = f"    acl svr_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
                 use_backend_line = f"    use_backend be_{id} if {{ path /{nim}/{category} }}||  {{ path_beg /{nim}/{category}/ }}"
                 backend_block = f"""
@@ -82,13 +86,9 @@ backend be_{id}
 """
 
                 # Menyimpan data ke variabel
-                # acl_lines.append(acl_line)
                 use_backend_lines.append(use_backend_line)
                 backend_blocks.append(backend_block)
 
-        # Menulis semua acl_line ke file
-        # for acl_line in acl_lines:
-        #     file.write(acl_line + "\n")
 
         # Menulis semua use_backend_line ke file
         for use_backend_line in use_backend_lines:
