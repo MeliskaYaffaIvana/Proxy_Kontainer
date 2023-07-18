@@ -18,8 +18,7 @@ if response.status_code == 200:
     backend_blocks = []
 
     # Menyiapkan teks awal file
-    teks_awal = """
-global
+    teks_awal = """global
     log /dev/log    local0
     log /dev/log    local1 notice
     chroot /var/lib/haproxy
