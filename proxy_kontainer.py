@@ -14,15 +14,15 @@ if response.status_code == 200:
         for container in containers:
             id = container['id']
             nim = container['nim']
-            port_kontainer = container['port_kontainer']
+            port = container['port']
 
-            acl_line = f"acl svr_{category}_{id} hdr(host) -i 1941720020.jti.polinema.ac.id"
+            acl_line = f"acl svr_{category}_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
             use_backend_line = f"use_backend be_{category}_{id} if svr_{category}_{id}"
             backend_block = f"""
 backend be_{category}_{id}
     mode http
     option forwardfor
-    server 10.0.0.21 10.0.0.21:{port_kontainer}
+    server 10.0.0.21 10.0.0.21:{port}
 """
 
             # Membuat file dengan nama kategori dan id sebagai nama file
