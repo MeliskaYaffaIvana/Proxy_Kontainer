@@ -12,8 +12,6 @@ if response.status_code == 200:
     # Memproses data JSON
     for category, containers in data.items():
         print(f"Kategori: {category}")
-        
-
             # Membuat file dengan nama kategori sebagai nama file
             nama_file = f"try.txt"
             isi_teks = f"Nama Kontainer: {container['nama_kontainer']}\nNIM: {container['nim']}"
@@ -21,6 +19,9 @@ if response.status_code == 200:
             # Menulis ke file menggunakan open()
             with open(nama_file, 'w') as file:
                 file.write(isi_teks)
+        
+
+            
 
 else:
     print(f"Permintaan gagal dengan kode status {response.status_code}")
