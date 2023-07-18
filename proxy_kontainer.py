@@ -29,11 +29,6 @@ if response.status_code == 200:
     option forwardfor
     server 10.0.0.21 10.0.0.21:{port}
 """
-
-                # Menulis konfigurasi ke file
-                file.write(acl_line + "\n")
-                file.write(use_backend_line + "\n")
-                file.write(backend_block)
                 
                 # Menulis acl_line ke file
                 file.write(acl_line + "\n")
