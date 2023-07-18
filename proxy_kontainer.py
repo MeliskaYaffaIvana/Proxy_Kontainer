@@ -24,6 +24,13 @@ if response.status_code == 200:
         #         print(f"NIM: {container['nim']}")
         #     else:
         #         print("Kunci 'nim' tidak ditemukan dalam objek kontainer")
+        # Writing Multiple Lines to a Text File
+        text = ['Welcome to datagy.io!', "Let's learn some Python!"]
+        
+        with open('/textfile.txt', 'w') as f:
+            for line in text:
+                f.write(line)
+                f.write('\n')
 
 else:
     print(f"Permintaan gagal dengan kode status {response.status_code}")
