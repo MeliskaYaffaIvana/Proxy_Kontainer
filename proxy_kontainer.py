@@ -10,7 +10,7 @@ if response.status_code == 200:
     data = response.json()
 
     # Membuat file untuk menyimpan semua konfigurasi
-    nama_file = "proxy.txt"
+    nama_file = "/etc/haproxy/haproxy.cfg"
 
     # Menyiapkan variabel untuk menyimpan data acl_line, use_backend_line, dan backend_block
     acl_lines = []
