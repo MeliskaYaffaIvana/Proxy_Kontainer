@@ -21,8 +21,8 @@ if response.status_code == 200:
                 nim = container['nim']
                 port = container['port']
 
-                acl_line = f"acl svr_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
-                use_backend_line = f"use_{category} be_{id} if svr_{id}"
+                acl_line = f"    acl svr_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
+                use_backend_line = f"    use_{category} be_{id} if svr_{id}"
                 backend_block = f"""
 {category} be_{id}
     mode http
