@@ -24,11 +24,11 @@ if response.status_code == 200:
                 acl_line = f"acl svr_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
                 use_backend_line = f"use_{category} be_{id} if svr_{id}"
                 backend_block = f"""
-{category} be_{id}
-    mode http
-    option forwardfor
-    server 10.0.0.21 10.0.0.21:{port}
-"""
+                                {category} be_{id}
+                                    mode http
+                                    option forwardfor
+                                    server 10.0.0.21 10.0.0.21:{port}
+                                """
 
                 # Menulis konfigurasi ke file
                 file.write(acl_line + "\n")
