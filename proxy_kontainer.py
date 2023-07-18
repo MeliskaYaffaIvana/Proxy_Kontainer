@@ -14,7 +14,7 @@ if response.status_code == 200:
         print(f"Kategori: {category}")
         # Membuat file dengan nama kategori sebagai nama file
         nama_file = f"try.txt"
-        isi_teks = f"Nama Kontainer: {container['nama_kontainer']}\nNIM: {container['nim']}"
+        isi_teks = f"Nama Kontainer: {containers['nama_kontainer']}\nNIM: {container['nim']}"
 
         # Menulis ke file menggunakan open()
         with open(nama_file, 'w') as file:
