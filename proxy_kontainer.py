@@ -71,23 +71,24 @@ frontend haproxynode
                 nim = container['nim']
                 port = container['port']
 
-                acl_line = f"    acl svr_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
-                use_backend_line = f"    use_backend be_{id} if svr_{id}"
+                # acl_line = f"    acl svr_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
+                use_backend_line = f"    use_backend be_{id} if { path /{nim}/{category} ||  { path_beg /{nim}/{category}/ }"
                 backend_block = f"""
 backend be_{id}
-    mode http
-    option forwardfor
+    # mode http
+    # option forwardfor
+    http-request replace-path /{nim}/{category}(/)?(.*) /\2
     server server1 10.0.0.21:{port}
 """
 
                 # Menyimpan data ke variabel
-                acl_lines.append(acl_line)
+                # acl_lines.append(acl_line)
                 use_backend_lines.append(use_backend_line)
                 backend_blocks.append(backend_block)
 
         # Menulis semua acl_line ke file
-        for acl_line in acl_lines:
-            file.write(acl_line + "\n")
+        # for acl_line in acl_lines:
+        #     file.write(acl_line + "\n")
 
         # Menulis semua use_backend_line ke file
         for use_backend_line in use_backend_lines:
