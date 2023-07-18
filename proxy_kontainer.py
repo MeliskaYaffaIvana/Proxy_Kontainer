@@ -30,14 +30,14 @@ if response.status_code == 200:
     server 10.0.0.21 10.0.0.21:{port}
 """
                 
-                # Menulis acl_line ke file
-                file.write(acl_line + "\n")
+        # Menulis acl_line ke file
+        file.write(acl_line + "\n")
 
-                # Menulis use_backend_line ke file
-                file.write(use_backend_line + "\n")
+        # Menulis use_backend_line ke file
+        file.write(use_backend_line + "\n")
 
-                # Menulis backend_block ke file
-                file.write(backend_block + "\n")
+        # Menulis backend_block ke file
+        file.write(backend_block + "\n")
 
 
 else:
