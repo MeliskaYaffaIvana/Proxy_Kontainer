@@ -17,7 +17,7 @@ if response.status_code == 200:
 
         # Membuat file dengan nama kategori sebagai nama file
         nama_file = f"{category}.txt"
-        isi_teks = f"Nama Kontainer: {containers['nama_kontainer']}\nNIM: {container['nim']}"
+        isi_teks = f"tetaplah mencoba"
 
         # Menjalankan perintah echo melalui shell untuk menulis ke file
         subprocess.run(['echo', isi_teks, '>', nama_file], shell=True)
