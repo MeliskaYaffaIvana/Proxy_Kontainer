@@ -77,7 +77,7 @@ frontend haproxynode
 backend be_{id}
     # mode http
     # option forwardfor
-    http-request replace-path /{nim}/{category}(/)?(.*) /\2
+    http-request replace-path /{nim}/{category}(/)?(.*) /\\2
     server server1 10.0.0.21:{port}
 """
 
