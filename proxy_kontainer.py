@@ -24,13 +24,17 @@ if response.status_code == 200:
         #         print(f"NIM: {container['nim']}")
         #     else:
         #         print("Kunci 'nim' tidak ditemukan dalam objek kontainer")
-        # Writing Multiple Lines to a Text File
-        text = ['Welcome to datagy.io!', "Let's learn some Python!"]
+        import subprocess
+
+        # Nama file yang akan dibuat
+        nama_file = "data.txt"
         
-        with open('/textfile.txt', 'w') as f:
-            for line in text:
-                f.write(line)
-                f.write('\n')
+        # Isi teks yang akan ditulis ke file
+        isi_teks = "Ini adalah contoh isi teks."
+        
+        # Menjalankan perintah echo melalui shell untuk membuat file
+        subprocess.run(['echo', isi_teks, '>', nama_file], shell=True)
+
 
 else:
     print(f"Permintaan gagal dengan kode status {response.status_code}")
