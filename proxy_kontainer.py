@@ -15,7 +15,7 @@ if response.status_code == 200:
         for container in containers:
             # Membuat file dengan nama kategori sebagai nama file
             nama_file = f"{category}.txt"
-            isi_teks = f"Nama Kontainer: {container['nama_kontainer']}\nNIM: {container['nim']}"
+            isi_teks = f"Nama Kontainer: {container['id']}\nNIM: {container['nim']}"
 
             # Menulis ke file menggunakan open()
             with open(nama_file, 'w') as file:
