@@ -16,10 +16,10 @@ if response.status_code == 200:
             nim = container['nim']
             port = container['port']
 
-            acl_line = f"acl svr_{category}_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
-            use_backend_line = f"use_backend be_{category}_{id} if svr_{category}_{id}"
+            acl_line = f"acl svr_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
+            use_backend_line = f"use_{category} be_{id} if svr_{id}"
             backend_block = f"""
-backend be_{category}_{id}
+{category} be_{id}
     mode http
     option forwardfor
     server 10.0.0.21 10.0.0.21:{port}
