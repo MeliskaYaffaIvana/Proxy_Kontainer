@@ -34,18 +34,15 @@ if response.status_code == 200:
                 file.write(acl_line + "\n")
                 file.write(use_backend_line + "\n")
                 file.write(backend_block)
+                
+                # Menulis acl_line ke file
+                file.write(acl_line + "\n")
 
-        # Menulis semua acl_line ke file
-        for acl_line in acl_lines:
-            file.write(acl_line + "\n")
+                # Menulis use_backend_line ke file
+                file.write(use_backend_line + "\n")
 
-        # Menulis semua use_backend_line ke file
-        for use_backend_line in use_backend_lines:
-            file.write(use_backend_line + "\n")
-
-        # Menulis semua backend_block ke file
-        for backend_block in backend_blocks:
-            file.write(backend_block + "\n")
+                # Menulis backend_block ke file
+                file.write(backend_block + "\n")
 
 
 else:
