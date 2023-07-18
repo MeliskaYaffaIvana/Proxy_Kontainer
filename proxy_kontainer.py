@@ -91,7 +91,7 @@ backend be_{id}
 
         # Menulis semua use_backend_line ke file
         for use_backend_line in use_backend_lines:
-            file.write(use_backend_line )
+            file.write(use_backend_line + "\n")
 
         # Menulis semua backend_block ke file
         for backend_block in backend_blocks:
