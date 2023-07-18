@@ -1,4 +1,5 @@
 import requests
+import subprocess
 
 # Membuat permintaan GET ke API Laravel untuk mendapatkan data kontainer per kategori
 url = 'http://10.0.0.19/api/containers'  # Ganti URL dengan URL API Laravel yang sesuai
@@ -24,16 +25,14 @@ if response.status_code == 200:
         #         print(f"NIM: {container['nim']}")
         #     else:
         #         print("Kunci 'nim' tidak ditemukan dalam objek kontainer")
-        import subprocess
+        
 
-        # Nama file yang akan dibuat
-        nama_file = "data.txt"
-        
-        # Isi teks yang akan ditulis ke file
-        isi_teks = "Ini adalah contoh isi teks."
-        
-        # Menjalankan perintah echo melalui shell untuk membuat file
-        subprocess.run(['echo', isi_teks, '>', nama_file], shell=True)
+        # Membuat file dengan nama kategori sebagai nama file
+            nama_file = f"{category}.txt"
+            isi_teks = f"Nama Kontainer: {container['nama_kontainer']}\nNIM: {container['nim']}"
+
+            # Menjalankan perintah echo melalui shell untuk menulis ke file
+            subprocess.run(['echo', isi_teks, '>', nama_file], shell=True)
 
 
 else:
