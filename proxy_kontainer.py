@@ -10,7 +10,7 @@ if response.status_code == 200:
     data = response.json()
 
     # Membuat file untuk menyimpan semua konfigurasi
-    nama_file = "config.txt"
+    nama_file = "proxy.txt"
 
     # Menulis ke file menggunakan open()
     with open(nama_file, 'w') as file:
