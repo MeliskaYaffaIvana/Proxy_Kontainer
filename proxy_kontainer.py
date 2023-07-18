@@ -30,7 +30,7 @@ if response.status_code == 200:
 {category} be_{id}
     mode http
     option forwardfor
-    server 10.0.0.21 10.0.0.21:{port}
+    server 10.0.0.21:{port}
 """
 
             # Menyimpan data ke variabel
