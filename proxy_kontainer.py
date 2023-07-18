@@ -57,6 +57,7 @@ frontend haproxynode
     bind *:8080
     mode http
     option httplog
+    
 """
 
     # Menulis teks awal ke file
