@@ -71,9 +71,9 @@ frontend haproxynode
                 port = container['port']
 
                 if category == 'frontend':
-                    category = 'fg'
+                    category = 'fe'
                 elif category == 'backend':
-                    category = 'bg'
+                    category = 'be'
 
                 # acl_line = f"    acl svr_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
                 use_backend_line = f"    use_backend be_{id} if {{ path /{nim}/{category} }}||  {{ path_beg /{nim}/{category}/ }}"
