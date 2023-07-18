@@ -54,7 +54,7 @@ defaults
     errorfile 504 /etc/haproxy/errors/504.http
 
 frontend haproxynode
-    bind *:8080
+    bind *:80
     mode http
     option httplog
     
