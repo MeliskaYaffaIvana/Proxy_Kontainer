@@ -53,6 +53,10 @@ defaults
     errorfile 503 /etc/haproxy/errors/503.http
     errorfile 504 /etc/haproxy/errors/504.http
 
+frontend haproxynode
+    bind *:8080
+    mode http
+    option httplog
 """
 
     # Menulis teks awal ke file
@@ -67,9 +71,9 @@ defaults
                 port = container['port']
 
                 acl_line = f"    acl svr_{id} hdr(host) -i {nim}.jti.polinema.ac.id"
-                use_backend_line = f"    use_{category} be_{id} if svr_{id}"
+                use_backend_line = f"    use_backend be_{id} if svr_{id}"
                 backend_block = f"""
-{category} be_{id}
+backend be_{id}
     mode http
     option forwardfor
     server 10.0.0.21:{port}
