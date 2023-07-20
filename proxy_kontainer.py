@@ -2,25 +2,12 @@ import requests
 import time
 import subprocess
 
-while True:
-    # Membuat permintaan GET ke API Laravel untuk mendapatkan data kontainer per kategori
-    url = 'http://10.0.0.19/api/containers'  # Ganti URL dengan URL API Laravel yang sesuai
-    response = requests.get(url)
+# Membuat file untuk menyimpan semua konfigurasi
+nama_file = "/etc/haproxy/haproxy.cfg"
 
-    # Memeriksa kode status permintaan
-    if response.status_code == 200:
-        # Mendapatkan data JSON dari respons
-        data = response.json()
-
-        # Membuat file untuk menyimpan semua konfigurasi
-        nama_file = "/etc/haproxy/haproxy.cfg"
-
-        # Menyiapkan variabel untuk menyimpan data use_backend_line, dan backend_block
-        use_backend_lines = []
-        backend_blocks = []
-
-        # Menyiapkan teks awal file
-        teks_awal = """global
+# Menyiapkan teks awal file
+teks_awal = """
+global
     log /dev/log    local0
     log /dev/log    local1 notice
     chroot /var/lib/haproxy
@@ -61,6 +48,20 @@ frontend haproxynode
     option httplog
 
 """
+
+while True:
+    # Membuat permintaan GET ke API Laravel untuk mendapatkan data kontainer per kategori
+    url = 'http://10.0.0.19/api/containers'  # Ganti URL dengan URL API Laravel yang sesuai
+    response = requests.get(url)
+
+    # Memeriksa kode status permintaan
+    if response.status_code == 200:
+        # Mendapatkan data JSON dari respons
+        data = response.json()
+
+        # Menyiapkan variabel untuk menyimpan data use_backend_line, dan backend_block
+        use_backend_lines = []
+        backend_blocks = []
 
         # Memproses data JSON
         for category, containers in data.items():
